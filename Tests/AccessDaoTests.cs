@@ -44,6 +44,7 @@ namespace Azavea.Open.DAO.OleDb.Tests
             // Reset the unit test database by copying the template, since we don't know what any
             // other unit tests (or a previous run of this test) has done to the state of the db.
             File.Copy("..\\..\\Tests\\Template\\UnitTest.mdb", "..\\..\\Tests\\UnitTest.mdb", true);
+            ResetAllTables();
         }
 
         /// <exclude/>

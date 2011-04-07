@@ -36,6 +36,6 @@ namespace Azavea.Open.DAO.OleDb.Tests
             : base(
                 new FastDAO<JoinClass1>(new Config("..\\..\\Tests\\SqlServerDao.config", "SqlServerDaoConfig"), "DAO"),
                 new FastDAO<JoinClass2>(new Config("..\\..\\Tests\\SqlServerDao.config", "SqlServerDaoConfig"), "DAO"),
-                true, true, true, true) { }
+                true, true, true, true, true) { }
     }
 }

@@ -178,6 +178,26 @@ namespace Azavea.Open.DAO.OleDb
         }
 
         /// <summary>
+        /// Returns the appropriate data access layer for this connection.  The default
+        /// implementation returns a normal SQL data access layer, but this may be
+        /// overridden in particular DB connection descriptors.
+        /// </summary>
+        public override IDaLayer CreateDataAccessLayer()
+        {
+            switch (Type)
+            {
+                case DatabaseType.ORACLE:
+                    return new OleDbOracleDaLayer(this);
+                case DatabaseType.SQLSERVER:
+                    return new OleDbSqlServerDaLayer(this);
+                case DatabaseType.ACCESS:
+                    return new OleDbAccessDaLayer(this);
+                default:
+                    throw new NotImplementedException("No data access layer available for DB type " + Type);
+            }
+        }
+
+        /// <summary>
         /// Begins the transaction.  Returns a NEW ConnectionDescriptor that you should
         /// use for operations you wish to be part of the transaction.
         /// 

@@ -35,24 +35,8 @@ namespace Azavea.Open.DAO.OleDb.Tests
         /// <exclude/>
         public SqlServerDaoTests()
             : base(new Config("..\\..\\Tests\\SqlServerDao.config", "SqlServerDaoConfig"), "DAO", 
-            true, true, true, true, true, false) { }
+            true, true, true, true, true) { }
 
-        /// <exclude/>
-        [TestFixtureSetUp]
-        public virtual void Init()
-        {
-            SqlConnectionUtilities.XSafeCommand((AbstractSqlConnectionDescriptor)_connDesc, "TRUNCATE TABLE EnumTable", null);
-            SqlConnectionUtilities.XSafeCommand((AbstractSqlConnectionDescriptor)_connDesc, "TRUNCATE TABLE BoolTable", null);
-            SqlConnectionUtilities.XSafeCommand((AbstractSqlConnectionDescriptor)_connDesc, "TRUNCATE TABLE NullableTable", null);
-            SqlConnectionUtilities.XSafeCommand((AbstractSqlConnectionDescriptor)_connDesc, "TRUNCATE TABLE NameTable", null);
-            SqlConnectionUtilities.XSafeCommand((AbstractSqlConnectionDescriptor)_connDesc, "DBCC CHECKIDENT (NameTable, RESEED, 1)", null);
-            SqlConnectionUtilities.XSafeCommand((AbstractSqlConnectionDescriptor)_connDesc, "INSERT INTO NameTable VALUES('Michael')", null);
-            SqlConnectionUtilities.XSafeCommand((AbstractSqlConnectionDescriptor)_connDesc, "INSERT INTO NameTable VALUES('Rich')", null);
-            SqlConnectionUtilities.XSafeCommand((AbstractSqlConnectionDescriptor)_connDesc, "INSERT INTO NameTable VALUES('Keith')", null);
-            SqlConnectionUtilities.XSafeCommand((AbstractSqlConnectionDescriptor)_connDesc, "INSERT INTO NameTable VALUES('Rachel')", null);
-            SqlConnectionUtilities.XSafeCommand((AbstractSqlConnectionDescriptor)_connDesc, "INSERT INTO NameTable VALUES('Jeff')", null);
-            SqlConnectionUtilities.XSafeCommand((AbstractSqlConnectionDescriptor)_connDesc, "INSERT INTO NameTable VALUES('Megan')", null);
-        }
         /// <exclude/>
         [Test]
         public void TestGetMappingFromSchema()

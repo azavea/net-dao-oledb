@@ -37,7 +37,7 @@ namespace Azavea.Open.DAO.OleDb.Tests
             : base(
                 new FastDAO<JoinClass1>(new Config("..\\..\\Tests\\AccessDao.config", "AccessDaoConfig"), "DAO"),
                 new FastDAO<JoinClass2>(new Config("..\\..\\Tests\\AccessDao.config", "AccessDaoConfig"), "DAO"),
-                true, true, true, false) { }
+                true, true, true, false, true) { }
 
         /// <exclude/>
         [TestFixtureSetUp]
@@ -46,6 +46,7 @@ namespace Azavea.Open.DAO.OleDb.Tests
             // Reset the unit test database by copying the template, since we don't know what any
             // other unit tests (or a previous run of this test) has done to the state of the db.
             File.Copy("..\\..\\Tests\\Template\\UnitTest.mdb", "..\\..\\Tests\\UnitTest.mdb", true);
+            ResetAllTables();
         }
     }
 }
