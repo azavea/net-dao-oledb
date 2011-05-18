@@ -111,7 +111,7 @@ namespace Azavea.Open.DAO.OleDb
             : this(GetTypeFromConfig(config, component),
                    config.GetParameter(component, "Provider", null),
                    config.GetParameter(component, "Server", null),
-                   config.GetParameter(component, "Database", null),
+                   config.GetParameterWithSubstitution(component, "Database", true, null),
                    config.GetParameter(component, "User", null),
                    GetDecryptedConfigParameter(config, component, "Password", decryptionDelegate),
                    config.GetParameterAsInt(component, "Connect_Timeout", null)) {}
