@@ -35,7 +35,7 @@ namespace Azavea.Open.DAO.OleDb.Tests
         /// <exclude/>
         public OracleDaoTests()
             : base(new Config("..\\..\\Tests\\OracleDao.config", "OracleDaoConfig"), "DAO",
-            false, true, false, true, false) { }
+            false, true, false, true, false, true) { }
 
         /// <exclude/>
         [Test]

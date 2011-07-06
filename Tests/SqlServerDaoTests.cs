@@ -35,7 +35,7 @@ namespace Azavea.Open.DAO.OleDb.Tests
         /// <exclude/>
         public SqlServerDaoTests()
             : base(new Config("..\\..\\Tests\\SqlServerDao.config", "SqlServerDaoConfig"), "DAO", 
-            true, true, true, true, true) { }
+            true, true, true, true, true, true, true) { }
 
         /// <exclude/>
         [Test]
