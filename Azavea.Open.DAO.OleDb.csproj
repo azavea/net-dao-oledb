@@ -45,6 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\ProductAssemblyInfo.cs">
+      <Link>ProductAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="OleDbOracleDaLayer.cs" />
     <Compile Include="OleDbAccessDaLayer.cs" />
     <Compile Include="OleDbDescriptor.cs" />
