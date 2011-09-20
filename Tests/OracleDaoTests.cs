@@ -21,6 +21,8 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
 
+using System;
+using System.Collections.Generic;
 using Azavea.Open.Common;
 using Azavea.Open.DAO.SQL;
 using Azavea.Open.DAO.Tests;
@@ -44,6 +46,44 @@ namespace Azavea.Open.DAO.OleDb.Tests
             SqlUtilTests.TestGetNullableTableMappingFromSchema((AbstractSqlConnectionDescriptor)
                 ConnectionDescriptor.LoadFromConfig(new Config("..\\..\\Tests\\OracleDao.config", "OracleDaoConfig"), "DAO"),
                 "NULLABLETABLE");
+        }
+
+        [Test]
+        public void TestCheckStoreRoomMissing()
+        {
+            OleDbOracleDaLayer ddl =
+                new OleDbOracleDaLayer(
+                    (OleDbDescriptor)
+                    ConnectionDescriptor.LoadFromConfig(
+                        new Config("..\\..\\Tests\\OracleDao.config", "OracleDaoConfig"), "DAO"));
+
+            // Make sure the store room to test does not exist
+            var colDef = new ClassMapColDefinition("Id", "Id", "INTEGER");
+            var cm = new ClassMapping("test", "UNITTEST.StoreroomDoesNotExist", new List<ClassMapColDefinition>{colDef}, false);
+            ddl.DeleteStoreRoom(cm);
+
+            try
+            {
+                // Hasn't been added yet, should not exist
+                Assert.IsTrue(
+                    ddl.StoreRoomMissing(cm), "Oracle storeroom should not exist");
+
+                ddl.CreateStoreRoom(cm);
+
+                // Correct name, should exist
+                Assert.IsFalse(
+                    ddl.StoreRoomMissing(cm), "Oracle Storeroom should exist");
+            }
+            finally
+            {
+                // Delete the storeromm, no matter what
+                ddl.DeleteStoreRoom(cm);
+            }
+
+            // Storeroom should be gone
+            Assert.IsTrue(
+                ddl.StoreRoomMissing(cm), "Oracle storeroom should not exist");
+
         }
     }
 }

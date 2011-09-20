@@ -112,9 +112,16 @@ namespace Azavea.Open.DAO.OleDb
         ///          before storing any data.</returns>
         public override bool StoreRoomMissing(ClassMapping mapping)
         {
+            // The user_tables doesn't store names with the owner prefix, remove it
+            // for the query
+            var start = mapping.Table.LastIndexOf('.');
+
+            // -1 is not found, but is not a good index, use 0
+            start = start != -1 ? (start + 1) : 0;
+
             int count = SqlConnectionUtilities.XSafeIntQuery(_connDesc,
                 "SELECT COUNT(*) FROM user_tables where table_name = '" +
-                mapping.Table.ToUpper() + "'", null);
+                mapping.Table.Substring(start).ToUpper() + "'", null);
             return count == 0;
         }
         
