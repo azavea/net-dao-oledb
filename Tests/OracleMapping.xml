@@ -1,77 +1,123 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="false">
-	<class name="Azavea.Open.DAO.Tests.NameClass,Azavea.Open.DAO" table="NameTable">
-		<id name="ID" column="ID">
-			<generator class="sequence">
-				<param name="sequence">name_id_seq</param>
-			</generator>
-		</id>
-		<property name="Name" column="Name" />
-	</class>
-	<class name="Azavea.Open.DAO.Tests.EnumClass,Azavea.Open.DAO" table="EnumTable">
-		<id name="ID" column="ID">
-			<generator class="sequence">
-				<param name="sequence">enum_id_seq</param>
-			</generator>
-		</id>
-		<property name="Enum1" column="StringEnum" type="string"/>
-		<property name="Enum2" column="IntEnum"/>
-	</class>
-	<class name="Azavea.Open.DAO.Tests.BoolClass,Azavea.Open.DAO" table="BoolTable">
-		<id name="ID" column="ID">
-			<generator class="sequence">
-				<param name="sequence">bool_id_seq</param>
-			</generator>
-		</id>
-		<property name="BoolVal" column="IntBool" type="integer"/>
-	</class>
-	<class name="Azavea.Open.DAO.Tests.NullableClass,Azavea.Open.DAO" table="NullableTable">
-		<id name="ID" column="ID">
-			<generator class="sequence">
-				<param name="sequence">null_id_seq</param>
-			</generator>
-		</id>
-		<property name="BoolVal" column="BoolCol" type="int?"/>
-		<property name="IntVal" column="IntCol"/>
-		<property name="DateVal" column="DateCol"/>
-		<property name="FloatVal" column="FloatCol"/>
-	</class>
-	<class name="Azavea.Open.DAO.Tests.EasyCompositeKeyClass,Azavea.Open.DAO" table="DoesntMatter">
-		<id name="ID1" column="IDCol1"/>
-		<id name="ID2" column="IDCol2"/>
-		<id name="ID3" column="IDCol3"/>
-		<property name="Prop1" column="PropCol1"/>
-		<property name="Prop2" column="PropCol2"/>
-	</class>
-	<class name="Azavea.Open.DAO.Tests.NoAutoIdClass,Azavea.Open.DAO" table="NoAutoIdTable">
-		<id name="ID" column="ID_Col"/>
-		<property name="Prop1" column="Prop1_Col"/>
-		<property name="Prop2" column="Prop2_Col"/>
-	</class>
-	<class name="Azavea.Open.DAO.Tests.NHibernateCompositeKeyClass,Azavea.Open.DAO" table="DoesntMatter">
-		<composite-id>
-			<key-property name="ID1" column="IDCol1" type="string"/>
-			<key-property name="ID2" column="IDCol2" type="string"/>
-			<key-property name="ID3" column="IDCol3" type="string"/>
-		</composite-id>
-		<property name="Prop1" column="PropCol1"/>
-		<property name="Prop2" column="PropCol2"/>
-	</class>
-	<class name="Azavea.Open.DAO.Tests.JoinClass1,Azavea.Open.DAO" table="Join1">
-		<id name="ID" column="ID">
-			<generator class="sequence">
-				<param name="sequence">join1_id_seq</param>
-			</generator>
-		</id>
-		<property name="JoinField" column="joinme"/>
+
+  <!-- mappings for geometry tests -->
+  <class name="Azavea.Open.DAO.OleDb.Tests.LineClass,Azavea.Open.DAO.OleDb" table="UNITTEST_LINE">
+    <id name="ObjectID" column="objectid" >
+      <generator class="sequence">
+        <param name="sequence">line_id_seq</param>
+      </generator>
+    </id>
+    <property name="Double" column="dbltest" />
+    <property name="String" column="strtest" />
+    <property name="Int" column="inttest" />
+    <property name="Shape" column="shape" type="GeoAPI.Geometries.ILineString,GeoAPI" />
+  </class>
+  <class name="Azavea.Open.DAO.OleDb.Tests.PointClass,Azavea.Open.DAO.OleDb" table="UNITTEST_POINT_1">
+    <id name="ObjectID" column="objectid" >
+      <generator class="sequence">
+        <param name="sequence">point_id_seq</param>
+      </generator>
+    </id>
+    <property name="Double" column="dbltest" />
+    <property name="String" column="strtest" />
+    <property name="Int" column="inttest" />
+    <property name="Shape" column="shape" type="GeoAPI.Geometries.IPoint,GeoAPI"  />
+  </class>
+  <class name="Azavea.Open.DAO.OleDb.Tests.PolyClass,Azavea.Open.DAO.OleDb" table="UNITTEST_POLY">
+    <id name="ObjectID" column="objectid" >
+      <generator class="sequence">
+        <param name="sequence">poly_id_seq</param>
+      </generator>
+    </id>
+    <property name="Double" column="dbltest" />
+    <property name="String" column="strtest" />
+    <property name="Int" column="inttest" />
+    <property name="Date" column="datetest" />
+    <property name="Shape" column="shape" type="GeoAPI.Geometries.IPolygon,GeoAPI" />
+  </class>
+  <class name="Azavea.Open.DAO.OleDb.Tests.NullableClass,Azavea.Open.DAO.OleDb" table="nullables">
+    <id name="NullableId" column="nullable_id" >
+      <generator class="sequence">
+        <param name="sequence">nullable_id_seq</param>
+      </generator>
+    </id>
+    <property name="SomeNullableInt" column="some_nullable_int" />
+  </class>
+
+  <!-- mappings for standard tests -->
+  <class name="Azavea.Open.DAO.Tests.NameClass,Azavea.Open.DAO" table="NameTable">
+    <id name="ID" column="ID">
+      <generator class="sequence">
+        <param name="sequence">name_id_seq</param>
+      </generator>
+    </id>
+    <property name="Name" column="Name" />
+  </class>
+  <class name="Azavea.Open.DAO.Tests.EnumClass,Azavea.Open.DAO" table="EnumTable">
+    <id name="ID" column="ID">
+      <generator class="sequence">
+        <param name="sequence">enum_id_seq</param>
+      </generator>
+    </id>
+    <property name="Enum1" column="StringEnum" type="string"/>
+    <property name="Enum2" column="IntEnum"/>
+  </class>
+  <class name="Azavea.Open.DAO.Tests.BoolClass,Azavea.Open.DAO" table="BoolTable">
+    <id name="ID" column="ID">
+      <generator class="sequence">
+        <param name="sequence">bool_id_seq</param>
+      </generator>
+    </id>
+    <property name="BoolVal" column="IntBool" type="integer"/>
+  </class>
+  <class name="Azavea.Open.DAO.Tests.NullableClass,Azavea.Open.DAO" table="NullableTable">
+    <id name="ID" column="ID">
+      <generator class="sequence">
+        <param name="sequence">null_id_seq</param>
+      </generator>
+    </id>
+    <property name="BoolVal" column="BoolCol" type="int?"/>
+    <property name="IntVal" column="IntCol"/>
+    <property name="DateVal" column="DateCol"/>
+    <property name="FloatVal" column="FloatCol"/>
+  </class>
+  <class name="Azavea.Open.DAO.Tests.EasyCompositeKeyClass,Azavea.Open.DAO" table="DoesntMatter">
+    <id name="ID1" column="IDCol1"/>
+    <id name="ID2" column="IDCol2"/>
+    <id name="ID3" column="IDCol3"/>
+    <property name="Prop1" column="PropCol1"/>
+    <property name="Prop2" column="PropCol2"/>
+  </class>
+  <class name="Azavea.Open.DAO.Tests.NoAutoIdClass,Azavea.Open.DAO" table="NoAutoIdTable">
+    <id name="ID" column="ID_Col"/>
+    <property name="Prop1" column="Prop1_Col"/>
+    <property name="Prop2" column="Prop2_Col"/>
+  </class>
+  <class name="Azavea.Open.DAO.Tests.NHibernateCompositeKeyClass,Azavea.Open.DAO" table="DoesntMatter">
+    <composite-id>
+      <key-property name="ID1" column="IDCol1" type="string"/>
+      <key-property name="ID2" column="IDCol2" type="string"/>
+      <key-property name="ID3" column="IDCol3" type="string"/>
+    </composite-id>
+    <property name="Prop1" column="PropCol1"/>
+    <property name="Prop2" column="PropCol2"/>
+  </class>
+  <class name="Azavea.Open.DAO.Tests.JoinClass1,Azavea.Open.DAO" table="Join1">
+    <id name="ID" column="ID">
+      <generator class="sequence">
+        <param name="sequence">join1_id_seq</param>
+      </generator>
+    </id>
+    <property name="JoinField" column="joinme"/>
     <property name="Name" column="name"/>
   </class>
-	<class name="Azavea.Open.DAO.Tests.JoinClass2,Azavea.Open.DAO" table="Join2">
-		<id name="ID" column="ID">
-			<generator class="sequence">
-				<param name="sequence">join2_id_seq</param>
-			</generator>
-		</id>
-		<property name="JoinField" column="joinme"/>
-	</class>
+  <class name="Azavea.Open.DAO.Tests.JoinClass2,Azavea.Open.DAO" table="Join2">
+    <id name="ID" column="ID">
+      <generator class="sequence">
+        <param name="sequence">join2_id_seq</param>
+      </generator>
+    </id>
+    <property name="JoinField" column="joinme"/>
+  </class>
 </hibernate-mapping>
