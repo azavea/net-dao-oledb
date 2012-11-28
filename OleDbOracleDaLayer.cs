@@ -124,6 +124,20 @@ namespace Azavea.Open.DAO.OleDb
         public object CreateGeometry(object input)
         {
             string s = (string)input;
+            // For some reason, sde.ST_AsText() is returning well-known text with no type,
+            // e.g. "( x1 y1, x2 y2, ...)"
+            if (s.StartsWith("((("))
+            {
+                s = "multipolygon " + s;
+            }
+            if (s.StartsWith("(("))
+            {
+                s = "polygon " + s;
+            }
+            else if (s.StartsWith("("))
+            {
+                s = "linestring " + s;
+            }
             object o = (s == "EMPTY" ? null : _wktReader.Read(s));
             return o;
         }
@@ -155,7 +169,7 @@ namespace Azavea.Open.DAO.OleDb
             if (expr is IntersectsExpression)
             {
                 queryToAddTo.Sql.Append(booleanOperator);
-                IntersectsExpression intersects = (IntersectsExpression)expr;
+                IntersectsExpression intersects = (IntersectsExpression) expr;
                 queryToAddTo.Sql.Append(string.Format("SDE.ST_Intersects(SDE.ST_GeomFromText(?,{0}),", intersects.Shape.SRID));
                 queryToAddTo.Params.Add(_wktWriter.Write(intersects.Shape));
                 queryToAddTo.Sql.Append(colPrefix).Append(mapping.AllDataColsByObjAttrs[intersects.Property]);
