@@ -1,4 +1,8 @@
 *.user
+*.suo
 bin
 obj
 Tests/UnitTest.mdb
+
+*.nupkg
+packages

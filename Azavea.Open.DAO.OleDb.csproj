@@ -52,13 +52,24 @@
     <DocumentationFile>bin\Release\Azavea.Open.DAO.OleDb.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+    <Reference Include="Azavea.Open.Common, Version=2.1.5.23452, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Azavea.Open.Common\lib\log4net\log4net.dll</HintPath>
+      <HintPath>packages\Azavea.Open.Common.2.1.5\lib\net20\Azavea.Open.Common.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=2.5.9.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+    <Reference Include="Azavea.Open.DAO, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Azavea.Open.Common\lib\nunit\nunit.framework.dll</HintPath>
+      <HintPath>packages\Azavea.Open.DAO.1.0.1\lib\net20\Azavea.Open.DAO.dll</HintPath>
+    </Reference>
+    <Reference Include="GeoAPI, Version=1.7.1.0, Culture=neutral, PublicKeyToken=a1a0da7def465678, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\GeoAPI.1.7.1\lib\net35-client\GeoAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -81,27 +92,24 @@
     <Compile Include="Tests\SqlServerJoinTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Azavea.Open.Common\Azavea.Open.Common.csproj">
-      <Project>{ADBFE412-4F06-454A-AAF5-E93719E3B1FD}</Project>
-      <Name>Azavea.Open.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Azavea.Open.DAO\Azavea.Open.DAO.csproj">
-      <Project>{A510DDB6-F817-4610-B08C-305EB937CE4F}</Project>
-      <Name>Azavea.Open.DAO</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="Azavea.Open.DAO.OleDb.nuspec" />
+    <None Include="packages.config" />
     <None Include="Tests\AccessDao.config" />
     <None Include="Tests\OracleDao.config" />
     <None Include="Tests\SqlServerDao.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Azavea.Open.Common.LICENSE.txt" />
+    <Content Include="Azavea.Open.Common.NamespaceDocs.xml" />
+    <Content Include="Azavea.Open.DAO.LICENSE.txt" />
+    <Content Include="Azavea.Open.DAO.NamespaceDocs.xml" />
     <Content Include="Azavea.Open.DAO.OleDb.LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Azavea.Open.DAO.OleDb.NamespaceDocs.xml">
     </Content>
     <Content Include="Tests\AccessMapping.xml" />
+    <Content Include="Tests\Mapping.xml" />
     <Content Include="Tests\OracleMapping.xml" />
     <Content Include="Tests\SqlServerMapping.xml" />
   </ItemGroup>

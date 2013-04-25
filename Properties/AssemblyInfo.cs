@@ -5,9 +5,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Azavea.Open.DAO.OleDb")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("OleDb adapter for FastDAO, an object-relational mapper for the .NET framework")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyProduct("Azavea.Open.DAO.OleDb")]
+[assembly: AssemblyProduct("FastDAO")]
 // Configure log4net using the .config file
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
