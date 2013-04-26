@@ -16,7 +16,8 @@
     <dependencies>
       <dependency id="Azavea.Open.Common" version="2.1.5" />
       <dependency id="Azavea.Open.DAO" version="1.0.1"/>
-      <dependency id="GeoAPI" version="1.7.1" />
+      <!-- NetTopologySuite 1.13.0, used by other Azavea libraries, fails to work with GeoAPI 1.7.1 -->
+      <dependency id="GeoAPI" version="[1.7.0]" />
       <dependency id="log4net" version="1.2.10" />
       <dependency id="NUnit" version="2.6.2"/>
     </dependencies>
