@@ -54,13 +54,16 @@
     <DocumentationFile>bin\Release\Azavea.Open.DAO.OleDb.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Azavea.Open.Common">
+    <Reference Include="Azavea.Open.Common, Version=2.1.5.23452, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Azavea.Open.Common.2.1.5\lib\net20\Azavea.Open.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Azavea.Open.DAO">
-      <HintPath>packages\Azavea.Open.DAO.1.0.3\lib\net20\Azavea.Open.DAO.dll</HintPath>
+    <Reference Include="Azavea.Open.DAO, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Azavea.Open.DAO.1.0.4\lib\net20\Azavea.Open.DAO.dll</HintPath>
     </Reference>
-    <Reference Include="GeoAPI">
+    <Reference Include="GeoAPI, Version=1.7.0.0, Culture=neutral, PublicKeyToken=a1a0da7def465678, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\GeoAPI.1.7.0\lib\net35-client\GeoAPI.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
