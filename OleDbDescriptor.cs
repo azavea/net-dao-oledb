@@ -581,6 +581,38 @@ namespace Azavea.Open.DAO.OleDb
         }
 
         /// <exclude/>
+        public override bool HasCaseInsensitiveLikeOperator()
+        {
+            switch (Type)
+            {
+                case DatabaseType.ORACLE:
+                    return false;
+                case DatabaseType.SQLSERVER:
+                    return true;
+                case DatabaseType.ACCESS:
+                    return true;
+                default:
+                    throw new NotImplementedException("Support for type " + Type +
+                                                      " is not yet fully implemented.");
+            }
+        }
+
+        /// <exclude/>
+        public override string CaseInsensitiveLikeOperator()
+        {
+            switch (Type)
+            { 
+                case DatabaseType.SQLSERVER:
+                    return "LIKE";
+                case DatabaseType.ACCESS:
+                    return "LIKE";
+                default:
+                    throw new NotImplementedException("Support for type " + Type +
+                                                      " is not yet fully implemented.");
+            }
+        }
+
+        /// <exclude/>
         public override string ColumnAliasPrefix()
         {
             switch (Type)
