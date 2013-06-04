@@ -81,6 +81,9 @@ namespace Azavea.Open.DAO.OleDb
             return "BIGINT";
         }
 
+        /// <summary>
+        /// Returns the SQL type used to store a DateTime in the DB.
+        /// </summary>
         protected override string GetDateTimeType()
         {
             return "DATETIME";

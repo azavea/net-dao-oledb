@@ -48,6 +48,7 @@ namespace Azavea.Open.DAO.OleDb.Tests
                 "NULLABLETABLE");
         }
 
+        /// <exclude/>
         [Test]
         public void TestCheckStoreRoomMissing()
         {
