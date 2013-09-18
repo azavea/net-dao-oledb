@@ -1,0 +1,1 @@
+.nuget\NuGet.exe pack -Symbols -Prop Configuration=Release
