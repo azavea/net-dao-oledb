@@ -93,7 +93,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Azavea.Open.DAO.OleDb.nuspec" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Tests\AccessDao.config" />
     <None Include="Tests\OracleDao.config" />
     <None Include="Tests\SqlServerDao.config" />
