@@ -62,4 +62,10 @@
 		</id>
 		<property name="JoinField" column="joinme"/>
 	</class>
+  <class name="Azavea.Open.DAO.Tests.JoinClass3,Azavea.Open.DAO" table="Join3">
+    <id name="ID" column="ID">
+      <generator class="native"/>
+    </id>
+    <property name="JoinField" column="joinme"/>
+  </class>
 </hibernate-mapping>

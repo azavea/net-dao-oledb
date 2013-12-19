@@ -64,12 +64,20 @@
 			</generator>
 		</id>
 		<property name="JoinField" column="joinme"/>
-    <property name="Name" column="name"/>
-  </class>
+		<property name="Name" column="name"/>
+	</class>
 	<class name="Azavea.Open.DAO.Tests.JoinClass2,Azavea.Open.DAO" table="Join2">
 		<id name="ID" column="ID">
 			<generator class="sequence">
 				<param name="sequence">join2_id_seq</param>
+			</generator>
+		</id>
+		<property name="JoinField" column="joinme"/>
+	</class>
+	<class name="Azavea.Open.DAO.Tests.JoinClass3,Azavea.Open.DAO" table="Join3">
+		<id name="ID" column="ID">
+			<generator class="sequence">
+				<param name="sequence">join3_id_seq</param>
 			</generator>
 		</id>
 		<property name="JoinField" column="joinme"/>
